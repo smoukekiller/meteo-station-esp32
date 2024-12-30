@@ -3,5 +3,6 @@
 
 void wifi_init();
 bool check_for_connection();
+void check_reconnection_timer();
 
 #endif
