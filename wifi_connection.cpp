@@ -20,7 +20,7 @@ void check_reconnection_timer()
   if (is_connected) wifi_reconnect_timer = millis();
   else
   {
-    if ((wifi_reconnect_timer + WIFI_RECONNECT_TIME) < millis()) {
+    if ((wifi_reconnect_timer + WIFI_RECONNECT_TIME) <= millis()) {
       Serial.println("reconnecting");
       wifi_init();
       wifi_reconnect_timer = millis();
