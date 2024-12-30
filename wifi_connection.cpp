@@ -6,6 +6,7 @@ void wifi_init()
 {
   WiFi.mode(WIFI_STA); //Optional
   WiFi.begin(NETWORK_SSID, NETWORK_PASSWORD);
+  Serial.println(WiFi.localIP());
 }
 
 bool check_for_connection()
