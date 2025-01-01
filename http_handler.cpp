@@ -7,14 +7,15 @@ void send_data() {
   if ((http_request_timer + HTTP_REQUEST_TIME) <= millis()) {
     if (is_connected) {
       HTTPClient http;
+      
       http.begin(SERVERURL);
       http.addHeader("Content-Type", "application/json");
-      String payload = "{\"key\": " + String(KEY) +
-                       ", \"temperature\": " + String(temperature) +
+      http.addHeader("Authorization", SECRET_KEY);
+      String payload = "{\"temperature\": " + String(temperature) +
                        ", \"humidity\": " + String(humidity) + "}";
 
       int httpResponseCode = http.POST(payload);
-
+      
       if (httpResponseCode > 0) {
         Serial.printf("HTTP Response code: %d\n", httpResponseCode);
         String response = http.getString();
